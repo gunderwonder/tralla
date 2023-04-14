@@ -1,19 +1,42 @@
-.App {
-	text-align: center;
-	max-width: 800px;
+body {
+	max-width: 400px;
 	margin: 0 auto;
-	font-family: 'Arial', sans-serif;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 18px;
+	padding: 10px;
 }
 
-ul {
-	list-style: none;
-	padding: 0;
+table {
+	width: 100%;
 }
 
-li {
-	margin-bottom: 1rem;
+table td {
+	text-align: left;
 }
 
+/* button without native styling */
 button {
-	margin-left: 1rem;
+	background: none;
+	border: none;
+	color: inherit;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	font-size: 150%
+}
+
+.price {
+	text-align: right;
+	padding-right: 3em;
+}
+
+td {
+	padding: 5px;
+}
+
+.reset {
+	font-size: 100%;
+	position: relative;
+	top: -15px;
 }

@@ -2,8 +2,24 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const items = [
-	{ name: 'Blå', price: 49 },
-	{ name: 'Gul', price: 35 },
+	{ name: 'Blå 0,5', price: 43 },
+	{ name: 'Gul 0,5', price: 37 },
+	{ name: 'Gul 0,33', price: 30 },
+	{ name: 'Rignes Lite 0,5', price: 43 },
+	{ name: 'Grønn 0,33', price: 42 },
+	{ name: 'Ginger Joe 0,5', price: 45 },
+	{ name: 'Crabbies 0,5', price: 69 },
+	{ name: 'Heineken 0,5', price: 62 },
+	{ name: 'Hansa 0,5', price: 56 },
+	{ name: 'San Miguel 0,5', price: 48 },
+	{ name: 'Kronenberg 1664', price: 43 },
+	{ name: 'Grevens Cider', price: 47 },
+	{ name: 'Corona 0,33', price: 44 },
+	{ name: 'Smirnoff Ice 0,33', price: 54 },
+	{ name: 'Bulmers 0,5', price: 59 },
+	{ name: 'Aas "Pinta"', price: 34 },
+	{ name: 'Carlsberg 0,5', price: 41 },
+	{ name: 'Schous 0,5', price: 43 },
 ];
 
 function App() {
@@ -32,19 +48,30 @@ function App() {
 		);
 	};
 
+	const resetCounts = () => {
+		setCounts({});
+		localStorage.removeItem('counts');
+	};
+
 	return (
 		<div className="App">
-			<h1>Varer jeg skylder</h1>
-			<ul>
-				{items.map((item) => (
-					<li key={item.name}>
-						{item.name} ({item.price} kr) - Antall: {counts[item.name] || 0}
-						<button onClick={() => updateCount(item, 1)}>+</button>
-						<button onClick={() => updateCount(item, -1)}>-</button>
-					</li>
-				))}
-			</ul>
-			<h2>Totalbeløp: {getTotal()} kr</h2>
+			<h1>Trallekalkulator</h1>
+			<h2>{getTotal()} kr</h2>
+			<button className="reset" onClick={resetCounts}>Nullstill</button>
+			<table>
+				<tbody>
+					{items.map((item) => (
+						<tr key={item.name}>
+							<td className='item-name'>{item.name}</td>
+							<td className='price'>{item.price},-</td>
+							<td className='plus'><button onClick={() => updateCount(item, 1)}>+</button></td>
+							<td className='count'>{counts[item.name] || 0}</td>
+							<td className='plus'><button onClick={() => updateCount(item, -1)}>-</button></td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+
 		</div>
 	);
 }
